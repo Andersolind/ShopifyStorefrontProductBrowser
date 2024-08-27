@@ -14,13 +14,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import DrawerNavigation from './src/navigation/DrawerNavigation';
 
 
-
-
 const RootContent = () => {
   return (
     <NavigationContainer>
       <DrawerNavigation />
-
     </NavigationContainer>
   )
 }

@@ -1,14 +1,15 @@
 import { View, Text, Dimensions, StyleSheet, Image, Touchable, TouchableOpacity } from 'react-native'
 import { colors } from '../constants';
 import { useNavigation } from '@react-navigation/native';
+import { NavigationProps } from '../../types';
 
 const { height } = Dimensions.get('window');
 
 const Intro = () => {
-    const navigation: any = useNavigation();
+    const navigation: NavigationProps = useNavigation();
     return (
 
-        <><View style={styles.container}>
+        <View style={styles.container}>
             <View style={styles.top}>
                 <Image
                     style={styles.introImg}
@@ -33,7 +34,7 @@ const Intro = () => {
 
                 </TouchableOpacity>
             </View>
-        </View></>
+        </View>
     )
 }
 

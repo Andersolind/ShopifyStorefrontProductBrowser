@@ -1,6 +1,6 @@
-export type Root = Root2[]
+export type Products = Product[]
 
-export interface Root2 {
+export interface Product {
   id: string
   title: string
   description: string

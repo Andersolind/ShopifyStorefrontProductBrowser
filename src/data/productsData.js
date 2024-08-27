@@ -1,4 +1,4 @@
-[
+const productsData = [
     {
       "id": "gid://shopify/Product/7634433605805",
       "title": "Unisex Hoodie",
@@ -1750,3 +1750,4 @@
       ]
     }
   ]
+  export  default productsData;
