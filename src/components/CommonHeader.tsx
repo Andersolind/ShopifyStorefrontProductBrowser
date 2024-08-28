@@ -13,7 +13,7 @@ const CommonHeader = ({ title }: { title: string }) => {
                 <Pressable onPress={() => navigation.goBack()}
                     style={{ flexDirection: 'row', alignItems: 'center' }} >
                     <ArrowLeftIcon color={colors.textBlack} size={20} />
-                    <Text>{title}</Text>
+                    <Text style={{color:colors.textBlack,marginLeft:5,fontWeight:'600'}}>{title}</Text>
                 </Pressable>
             </View>
         </SafeAreaView>

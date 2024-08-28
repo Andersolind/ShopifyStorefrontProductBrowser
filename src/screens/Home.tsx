@@ -34,11 +34,11 @@ const Home = () => {
   }, [])
 
   const RenderItem = ({ item }: Item) => {
-    console.log(item.images[0].url)
+
     return (
-      <TouchableOpacity 
-      onPress={() => navigation.navigate('ProductDetails',{id:item?.id})} 
-      style={styles.productView}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('ProductDetails', { id: item?.id })}
+        style={styles.productView}>
 
         <Image
           style={styles.img}
@@ -46,6 +46,12 @@ const Home = () => {
             uri: item.images[0].url,
           }}
         />
+        <View>
+          <Text>{item?.title}</Text>
+        </View>
+        <View>
+          <Text>${item?.compareAtPriceRange.minVariantPrice.amount}</Text>
+        </View>
       </TouchableOpacity>
     )
   }
@@ -59,8 +65,6 @@ const Home = () => {
         {isLoading ? (
           <Text>Loader</Text>) :
           (
-
-
             <FlatList data={productsArray} contentContainerStyle={styles.container}
               keyExtractor={(item: any) => item?.id}
               renderItem={RenderItem}
@@ -96,9 +100,9 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "100%",
-    height: "100%",
+    height: "60%",
     objectFit: "contain",
-    marginTop: -10
+    marginTop: -1
   },
 })
 
