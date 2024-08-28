@@ -1,6 +1,6 @@
 export type Products = Product[]
 
-export interface Product {
+export interface ProductProps {
   id: string
   title: string
   description: string

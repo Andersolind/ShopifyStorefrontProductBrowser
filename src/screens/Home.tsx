@@ -3,10 +3,14 @@ import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import { colors } from '../constants';
 import productsData from '../data/productsData'
-import { Product, Products } from '../models/data';
+import { Item } from '../models/products';
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProps } from '../../types';
+
 const { height } = Dimensions.get('window');
 
 const Home = () => {
+  const navigation: any = useNavigation();
   const [productsArray, setProductsArray] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,19 +33,19 @@ const Home = () => {
     getData();
   }, [])
 
-  const RenderItem = ({ item }: any) => {
-   console.log(item.images[0].url)
+  const RenderItem = ({ item }: Item) => {
+    console.log(item.images[0].url)
     return (
-      <TouchableOpacity  style={styles.productView}>
-        <Text>
-        {item.images[0].url}
-        </Text>
+      <TouchableOpacity 
+      onPress={() => navigation.navigate('ProductDetails',{id:item?.id})} 
+      style={styles.productView}>
+
         <Image
-        style={styles.img}
-        source={{
-          uri: item.images[0].url,
-        }}
-      />
+          style={styles.img}
+          source={{
+            uri: item.images[0].url,
+          }}
+        />
       </TouchableOpacity>
     )
   }
@@ -52,16 +56,23 @@ const Home = () => {
       <Header />
 
       <View>
-        <FlatList data={productsArray} contentContainerStyle={styles.container}
-          keyExtractor={(item: any) => item?.id}
-          renderItem={RenderItem}
-          refreshing={refreshing}
-          onRefresh={() => {
-            getData();
-          }
-          }
-          numColumns={2}
-        />
+        {isLoading ? (
+          <Text>Loader</Text>) :
+          (
+
+
+            <FlatList data={productsArray} contentContainerStyle={styles.container}
+              keyExtractor={(item: any) => item?.id}
+              renderItem={RenderItem}
+              refreshing={refreshing}
+              onRefresh={() => {
+                getData();
+              }
+              }
+              numColumns={2}
+            />
+          )
+        }
       </View>
     </View>
   )
@@ -88,7 +99,7 @@ const styles = StyleSheet.create({
     height: "100%",
     objectFit: "contain",
     marginTop: -10
-},
+  },
 })
 
 

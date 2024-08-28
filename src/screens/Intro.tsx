@@ -16,6 +16,7 @@ const Intro = () => {
                     source={{
                         uri: 'https://cdn.shopify.com/s/files/1/0654/2458/8973/files/15432182594235543675_2048_1180x400.jpg',
                     }} />
+                    
             </View>
 
             {/* bottom */}
