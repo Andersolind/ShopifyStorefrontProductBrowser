@@ -31,6 +31,8 @@ export const ListItem = ({ item }: { item:  Variant }) => {
 
             <Animated.View style={animatedStyle}>
                 <Text>{item.product.options[0].name}</Text>
+                {item.availableForSale !== false ? <Text>{item.availableForSale}</Text> :
+                <Text style={styles.availableItem}>{item.availableForSale}</Text>}
             </Animated.View>
         </View>
     )
@@ -38,6 +40,9 @@ export const ListItem = ({ item }: { item:  Variant }) => {
 }
 
 const styles = StyleSheet.create({
+    availableItem:{
+        textDecorationLine:'line-through'
+    },
     wrap: {
         borderColor: '#ccc',
         borderWidth: 1,
