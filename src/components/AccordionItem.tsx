@@ -4,7 +4,7 @@ import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated"
 import { Variant } from "../models/data";
 
 
-export const ListItem = ({ item }: { item:  Variant }) => {
+export const ListItem = ({ item }: { item: Variant }) => {
     const [expanded, setExpanded] = useState(false);
 
     const onItemPress = () => {
@@ -30,17 +30,18 @@ export const ListItem = ({ item }: { item:  Variant }) => {
             </TouchableNativeFeedback>
 
             <Animated.View style={animatedStyle}>
-                <Text>{item.product.options[0].name}</Text>
-                {item.availableForSale === false ? <Text>{item.availableForSale}</Text> :
-                <Text style={styles.availableItem}>{item.availableForSale}</Text>}
+                <Text style={styles.text}>{item.product.options[0].name}</Text>
+                <Text>{item.title}</Text>
+                {item.availableForSale ? <Text>available for sale</Text> : <Text style={styles.availableItem}> not available for sale </Text>}
+
             </Animated.View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    availableItem:{
-        textDecorationLine:'line-through'
+    availableItem: {
+        textDecorationLine: 'line-through'
     },
     wrap: {
         borderColor: '#ccc',
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 3, height: 3 },
         shadowOpacity: 0.2
     },
-    container: {flex:1,flexDirection: "row", width:'auto'},
+    container: { flex: 1, flexDirection: "row", width: 'auto' },
     image: { width: 50, height: 50, margin: 10, borderRadius: 5 },
     textContainer: { justifyContent: "space-around" },
     details: { margin: 10 },

@@ -5,7 +5,7 @@ import { colors } from '../constants';
 import productsData from '../data/productsData'
 import { Item } from '../models/products';
 import { useNavigation } from '@react-navigation/native';
-import { NavigationProps } from '../../types';
+
 import { ShoppingCartIcon } from 'react-native-heroicons/outline';
 
 const { height } = Dimensions.get('window');
@@ -18,8 +18,6 @@ const Home = () => {
 
   async function getData() {
     try {
-
-      
       setProductsArray(productsData);
       setIsLoading(false);
     } catch (error) {
@@ -35,9 +33,9 @@ const Home = () => {
 
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate('ProductDetails', { id: item.id, image:item?.images[0].url })}
+        onPress={() => navigation.navigate('ProductDetails', { id: item.id, image: item?.images[0].url })}
         style={styles.productView}>
-          {/* image */}
+        {/* image */}
         <Image
           style={styles.img}
           source={{
