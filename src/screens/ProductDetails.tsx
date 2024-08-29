@@ -1,4 +1,4 @@
-import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity, FlatList, ListRenderItemInfo } from 'react-native'
+import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity, FlatList, ListRenderItemInfo, SafeAreaView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '../components/CommonHeader'
 import { ProductsProps } from '../models/products'
@@ -31,7 +31,12 @@ const ProductDetails = ({ route }: any) => {
   }, [_id])
 
   const RenderItem = ({ item }: ListRenderItemInfo<ProductsProps>) => {
-    return <ListItem item={item} />
+
+  const list =  item.variants.map((varient => {
+      return <ListItem item={varient} key={varient.id} />
+    }))
+    return list;
+     
   }
 
   return (
@@ -76,15 +81,11 @@ const ProductDetails = ({ route }: any) => {
 
                   <ShoppingCartIcon size={20} color={colors.textBlack} />
                 </TouchableOpacity>
-              </View>
-             
 
-            </View></>
-          )
-        }
-      </View>
-      <View>
-                <FlatList data={productdata} contentContainerStyle={styles.container}
+              </View>
+              {/* expandable list */}
+              
+                <FlatList data={productdata} contentContainerStyle={styles.list}
                   keyExtractor={(item: any) => item?.id}
                   renderItem={RenderItem}
                   refreshing={refreshing}
@@ -92,9 +93,13 @@ const ProductDetails = ({ route }: any) => {
                     getData();
                   }
                   }
-                  numColumns={2}
                 />
-              </View>
+              
+            </View></>
+          )
+        }
+      </View>
+
     </View>
   )
 }
@@ -104,9 +109,11 @@ const ProductDetails = ({ route }: any) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.defaultWhite, height: height,
-    position: 'relative',
-    flex:1
+    backgroundColor: colors.defaultWhite, width: 'auto',
+  },
+  list: {
+    flex: 1,
+    width: 'auto'
   },
   imgView: {
     width: width,

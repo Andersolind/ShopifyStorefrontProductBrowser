@@ -19,6 +19,7 @@ const Home = () => {
   async function getData() {
     try {
 
+      
       setProductsArray(productsData);
       setIsLoading(false);
     } catch (error) {

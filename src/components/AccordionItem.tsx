@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { ProductsProps } from "../models/products";
-import { Image, StyleSheet, Text, View } from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Image, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated";
+import { Variant } from "../models/data";
 
 
-export const ListItem = ({ item }: { item: ProductsProps }) => {
+export const ListItem = ({ item }: { item:  Variant }) => {
     const [expanded, setExpanded] = useState(false);
 
     const onItemPress = () => {
@@ -21,17 +20,17 @@ export const ListItem = ({ item }: { item: ProductsProps }) => {
 
     return (
         <View style={styles.wrap}>
-            <TouchableWithoutFeedback onPress={onItemPress} >
+            <TouchableNativeFeedback onPress={onItemPress} >
                 <View style={styles.container}>
-                    <Image source={{ uri: item.images[0].url }} style={styles.image} />
+                    <Image source={{ uri: item.image.url }} style={styles.image} />
                     <View style={styles.textContainer}>
-                        <Text style={styles.text}>{item.variants[0].title}</Text>
+                        <Text style={styles.text}>{item.title}</Text>
                     </View>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableNativeFeedback>
 
             <Animated.View style={animatedStyle}>
-                <Text>{item.variants[0].product.options[0].name}</Text>
+                <Text>{item.product.options[0].name}</Text>
             </Animated.View>
         </View>
     )
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 3, height: 3 },
         shadowOpacity: 0.2
     },
-    container: { flexDirection: "row" },
+    container: {flex:1,flexDirection: "row", width:'auto'},
     image: { width: 50, height: 50, margin: 10, borderRadius: 5 },
     textContainer: { justifyContent: "space-around" },
     details: { margin: 10 },
