@@ -1,4 +1,4 @@
-import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity, FlatList, ListRenderItemInfo, SafeAreaView } from 'react-native'
+import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity, FlatList, ListRenderItemInfo, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import CommonHeader from '../components/CommonHeader'
 import { ProductsProps } from '../models/products'
@@ -40,13 +40,14 @@ const ProductDetails = ({ route }: any) => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <CommonHeader title="Product Details" />
       <View>
         {isLoading && productdata ? (
           <Text>Loader</Text>) :
           (
             <><View>
+              
               {/* image */}
               <View style={styles.imgView}>
 
@@ -83,28 +84,24 @@ const ProductDetails = ({ route }: any) => {
                 </TouchableOpacity>
 
               </View>
-              {/* expandable list */}
-              
+              {/* expandable list */} 
                 <FlatList data={productdata} contentContainerStyle={styles.list}
                   keyExtractor={(item: any) => item?.id}
                   renderItem={RenderItem}
+                  scrollEnabled={false}
                   refreshing={refreshing}
                   onRefresh={() => {
                     getData();
                   }
-                  }
+               }
                 />
-              
             </View></>
           )
         }
       </View>
-
-    </View>
+    </ScrollView>
   )
 }
-
-
 
 
 const styles = StyleSheet.create({

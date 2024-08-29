@@ -31,12 +31,11 @@ export const ListItem = ({ item }: { item:  Variant }) => {
 
             <Animated.View style={animatedStyle}>
                 <Text>{item.product.options[0].name}</Text>
-                {item.availableForSale !== false ? <Text>{item.availableForSale}</Text> :
+                {item.availableForSale === false ? <Text>{item.availableForSale}</Text> :
                 <Text style={styles.availableItem}>{item.availableForSale}</Text>}
             </Animated.View>
         </View>
     )
-
 }
 
 const styles = StyleSheet.create({
