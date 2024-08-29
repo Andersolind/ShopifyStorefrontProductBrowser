@@ -23,7 +23,7 @@ const Intro = () => {
             <View accessible={true} style={styles.bottom}>
                 <Text style={styles.title}>Great way to lift your style</Text>
 
-                <Text style={styles.title} >
+                <Text style={styles.subtitle} >
                     <Text> Complete your style with awesome collections from Reactiv</Text>
                 </Text>
 
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     subtitle: {
-        color: '#fff',
+        color: 'black',
         textAlign: 'center',
         marginTop: 20
     },
