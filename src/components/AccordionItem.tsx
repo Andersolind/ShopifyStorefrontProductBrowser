@@ -19,7 +19,7 @@ export const ListItem = ({ item }: { item: Variant }) => {
     })
 
     return (
-        <View style={styles.wrap}>
+        <View  accessible={true} style={styles.wrap}>
             <TouchableNativeFeedback onPress={onItemPress} >
                 <View style={styles.container}>
                     <Image source={{ uri: item.image.url }} style={styles.image} />
@@ -29,7 +29,7 @@ export const ListItem = ({ item }: { item: Variant }) => {
                 </View>
             </TouchableNativeFeedback>
 
-            <Animated.View style={animatedStyle}>
+            <Animated.View  accessible={true} style={animatedStyle}>
                 <Text style={styles.text}>{item.product.options[0].name}</Text>
                 <Text>{item.title}</Text>
                 {item.availableForSale ? <Text>available for sale</Text> : <Text style={styles.availableItem}> not available for sale </Text>}

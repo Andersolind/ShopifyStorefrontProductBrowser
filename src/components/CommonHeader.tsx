@@ -2,7 +2,7 @@ import { View, Text, Pressable, SafeAreaView, StyleSheet } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProps } from '../../types';
-import { ArrowLeftIcon, Bars4Icon, ShoppingCartIcon } from 'react-native-heroicons/outline';
+import { ArrowLeftIcon, ShoppingCartIcon } from 'react-native-heroicons/outline';
 import { colors } from '../constants';
 
 const CommonHeader = ({ title }: { title: string }) => {

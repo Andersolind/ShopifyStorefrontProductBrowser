@@ -33,6 +33,9 @@ const Home = () => {
 
     return (
       <TouchableOpacity
+        accessible={true}
+        accessibilityLabel="Go to Products Detail"
+        accessibilityHint="Navigates to the product details"
         onPress={() => navigation.navigate('ProductDetails', { id: item.id, image: item?.images[0].url })}
         style={styles.productView}>
         {/* image */}
@@ -42,11 +45,11 @@ const Home = () => {
             uri: item.images[0].url,
           }}
         />
-        <View style={styles.textView}>
+        <View  accessible={true} style={styles.textView}>
           {/* title */}
           <Text>{item?.title}</Text>
 
-          <View style={{
+          <View  accessible={true} style={{
             flexDirection: 'row', alignItems: 'center',
             justifyContent: 'space-between', marginVertical: 5
           }}>
@@ -54,6 +57,9 @@ const Home = () => {
             <Text style={{ fontWeight: '600', color: colors.textBlack, fontSize: 12 }}>
               ${item?.compareAtPriceRange.minVariantPrice.amount}</Text>
             <TouchableOpacity
+             accessible={true}
+             accessibilityLabel="Add to Cart"
+             accessibilityHint="Navigates to the product details"
               style={{
                 backgroundColor: colors.designColor,
                 paddingHorizontal: 10,

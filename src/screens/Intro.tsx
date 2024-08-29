@@ -9,25 +9,26 @@ const Intro = () => {
     const navigation: NavigationProps = useNavigation();
     return (
 
-        <View style={styles.container}>
-            <View style={styles.top}>
+        <View style={styles.container} accessible={true}>
+            <View accessible={true} style={styles.top}>
                 <Image
                     style={styles.introImg}
                     source={{
                         uri: 'https://cdn.shopify.com/s/files/1/0654/2458/8973/files/15432182594235543675_2048_1180x400.jpg',
                     }} />
-                    
+
             </View>
 
             {/* bottom */}
-            <View style={styles.bottom}>
+            <View accessible={true} style={styles.bottom}>
                 <Text style={styles.title}>Great way to lift your style</Text>
 
-                <Text style={styles.subtitle} >
+                <Text style={styles.title} >
                     <Text> Complete your style with awesome collections from Reactiv</Text>
                 </Text>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                    accessibilityLabel="Home" accessible={true} style={styles.button}>
                     <Text style={styles.buttonText}
                         onPress={() => navigation.navigate('Home')}>
                         Get Started

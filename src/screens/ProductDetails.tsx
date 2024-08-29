@@ -46,13 +46,14 @@ const ProductDetails = ({ route }: any) => {
         {isLoading && productdata ? (
           <Text>Loader</Text>) :
           (
-            <><View>
+            <><View accessible={true}>
               
               {/* image */}
-              <View style={styles.imgView}>
+              <View accessible={true} style={styles.imgView}>
 
                 {productdata && (
                   <Image
+                  alt='Reactiv hoodie'
                     source={{
                       uri: productdata[0].images[0].url
                     }}
@@ -68,7 +69,7 @@ const ProductDetails = ({ route }: any) => {
               <Text>
                 ${productdata && productdata[0].variants[0].price.amount}
               </Text>
-              <View style={{
+              <View accessible={true} style={{
                 flexDirection: 'row', alignItems: 'center',
                 justifyContent: 'space-between', marginVertical: 5
               }}>
