@@ -1,6 +1,6 @@
 export const colors = {
     bgColor:'#0c0a09',
-    defaultWhite:'#ffffff0',
+    defaultWhite:'white',
     lightText:'#0f172a',
     textBlack:'#020617',
     designColor:'#fbbf24',

@@ -6,6 +6,7 @@ import productsData from '../data/productsData'
 import { Item } from '../models/products';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProps } from '../../types';
+import { ShoppingCartIcon } from 'react-native-heroicons/outline';
 
 const { height } = Dimensions.get('window');
 
@@ -17,11 +18,7 @@ const Home = () => {
 
   async function getData() {
     try {
-      //  console.log(productsData,'data');
-      // const response = await fetch('https://gist.githubusercontent.com/tsopin/22b7b6b32cef24dbf3dd98ffcfb63b1a/raw/6f379a4730ceb3c625afbcb0427ca9db7f7f3b8b/testProducts.json')
-      //  const response = await fetch(productsData); 
 
-      // const json = await response.json();
       setProductsArray(productsData);
       setIsLoading(false);
     } catch (error) {
@@ -37,20 +34,37 @@ const Home = () => {
 
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate('ProductDetails', { id: item?.id })}
+        onPress={() => navigation.navigate('ProductDetails', { id: item.id, image:item?.images[0].url })}
         style={styles.productView}>
-
+          {/* image */}
         <Image
           style={styles.img}
           source={{
             uri: item.images[0].url,
           }}
         />
-        <View>
+        <View style={styles.textView}>
+          {/* title */}
           <Text>{item?.title}</Text>
-        </View>
-        <View>
-          <Text>${item?.compareAtPriceRange.minVariantPrice.amount}</Text>
+
+          <View style={{
+            flexDirection: 'row', alignItems: 'center',
+            justifyContent: 'space-between', marginVertical: 5
+          }}>
+
+            <Text style={{ fontWeight: '600', color: colors.textBlack, fontSize: 12 }}>
+              ${item?.compareAtPriceRange.minVariantPrice.amount}</Text>
+            <TouchableOpacity
+              style={{
+                backgroundColor: colors.designColor,
+                paddingHorizontal: 10,
+                paddingVertical: 7,
+                borderRadius: 6,
+              }}>
+              <ShoppingCartIcon size={20} color={colors.textBlack} />
+            </TouchableOpacity>
+          </View>
+
         </View>
       </TouchableOpacity>
     )
@@ -58,9 +72,7 @@ const Home = () => {
 
   return (
     <View>
-
       <Header />
-
       <View>
         {isLoading ? (
           <Text>Loader</Text>) :
@@ -84,8 +96,11 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.defaultWhite,
-    paddingBottom: 200,
+    backgroundColor: "white",
+    paddingBottom: 300,
+  },
+  textView: {
+    padding: 10
   },
   productView: {
     flex: 1,
@@ -100,7 +115,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "100%",
-    height: "60%",
+    height: "50%",
     objectFit: "contain",
     marginTop: -1
   },

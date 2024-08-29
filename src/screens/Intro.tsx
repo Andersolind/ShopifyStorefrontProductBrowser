@@ -24,7 +24,7 @@ const Intro = () => {
                 <Text style={styles.title}>Great way to lift your style</Text>
 
                 <Text style={styles.subtitle} >
-                    <Text> Complete your style with awesome collections from Reactive</Text>
+                    <Text> Complete your style with awesome collections from Reactiv</Text>
                 </Text>
 
                 <TouchableOpacity style={styles.button}>

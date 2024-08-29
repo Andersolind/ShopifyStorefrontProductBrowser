@@ -15,7 +15,7 @@ const Header = () => {
                 </Pressable>
                 {/* logo */}
                 <Pressable onPress={() => navigation.navigate('Intro')}>
-                    <Text>Reactive</Text>
+                    <Text>Reactiv</Text>
                 </Pressable>
                 {/* shopping cart */}
                 <Pressable >
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderBottomWidth: 1,
+        backgroundColor:"white",
         borderBlockColor: 'grey'
     }
 })
