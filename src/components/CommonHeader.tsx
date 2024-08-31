@@ -11,11 +11,11 @@ const CommonHeader = ({ title }: { title: string }) => {
         <SafeAreaView>
             <View style={styles.container}>
                 <Pressable onPress={() => navigation.goBack()}
-                    style={{ flexDirection: 'row', alignItems: 'center' }} >
+                    style={styles.backButton} >
                     <ArrowLeftIcon color={colors.textBlack} size={20} />
-                    <Text style={{color:colors.textBlack,marginLeft:5,fontWeight:'600'}}>{title}</Text>
+                    <Text style={styles.title}>{title}</Text>
                 </Pressable>
-                
+
                 {/* logo */}
                 <Pressable onPress={() => navigation.navigate('Intro')}>
                     <Text>Reactiv</Text>
@@ -32,7 +32,15 @@ const CommonHeader = ({ title }: { title: string }) => {
     )
 };
 const styles = StyleSheet.create({
-
+    backButton: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    title: {
+        color: colors.textBlack,
+        marginLeft: 5,
+        fontWeight: '600'
+    },
     cartCount: {
         borderRadius: 50,
         backgroundColor: 'black',

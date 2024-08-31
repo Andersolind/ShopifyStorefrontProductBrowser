@@ -7,6 +7,7 @@ import { Item } from '../models/products';
 import { useNavigation } from '@react-navigation/native';
 
 import { ShoppingCartIcon } from 'react-native-heroicons/outline';
+import Loader from '../components/Loader';
 
 const { height } = Dimensions.get('window');
 
@@ -45,27 +46,17 @@ const Home = () => {
             uri: item.images[0].url,
           }}
         />
-        <View  accessible={true} style={styles.textView}>
+        <View accessible={true} style={styles.textView}>
           {/* title */}
           <Text>{item?.title}</Text>
-
-          <View  accessible={true} style={{
-            flexDirection: 'row', alignItems: 'center',
-            justifyContent: 'space-between', marginVertical: 5
-          }}>
-
-            <Text style={{ fontWeight: '600', color: colors.textBlack, fontSize: 12 }}>
+          <View accessible={true} style={styles.addToCartContainer}>
+            <Text style={styles.minVariant}>
               ${item?.compareAtPriceRange.minVariantPrice.amount}</Text>
             <TouchableOpacity
-             accessible={true}
-             accessibilityLabel="Add to Cart"
-             accessibilityHint="Navigates to the product details"
-              style={{
-                backgroundColor: colors.designColor,
-                paddingHorizontal: 10,
-                paddingVertical: 7,
-                borderRadius: 6,
-              }}>
+              accessible={true}
+              accessibilityLabel="Add to Cart"
+              accessibilityHint="Navigates to the product details"
+              style={styles.addToCart}>
               <ShoppingCartIcon size={20} color={colors.textBlack} />
             </TouchableOpacity>
           </View>
@@ -80,7 +71,7 @@ const Home = () => {
       <Header />
       <View>
         {isLoading ? (
-          <Text>Loader</Text>) :
+          <Loader title="Product is loading" />) :
           (
             <FlatList data={productsArray} contentContainerStyle={styles.container}
               keyExtractor={(item: any) => item?.id}
@@ -88,8 +79,7 @@ const Home = () => {
               refreshing={refreshing}
               onRefresh={() => {
                 getData();
-              }
-              }
+              }}
               numColumns={2}
             />
           )
@@ -100,6 +90,23 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+  addToCartContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 5
+  },
+  minVariant: {
+    fontWeight: '600',
+    color: colors.textBlack,
+    fontSize: 12
+  },
+  addToCart: {
+    backgroundColor: colors.designColor,
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    borderRadius: 6,
+  },
   container: {
     backgroundColor: "white",
     paddingBottom: 300,

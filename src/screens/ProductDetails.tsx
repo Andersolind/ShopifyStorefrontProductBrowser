@@ -6,6 +6,7 @@ import productsData from '../data/productsData'
 import { colors } from '../constants'
 import { ShoppingCartIcon } from 'react-native-heroicons/outline'
 import { ListItem } from '../components/AccordionItem'
+import Loader from '../components/Loader'
 
 const { width, height } = Dimensions.get('window');
 
@@ -44,7 +45,7 @@ const ProductDetails = ({ route }: any) => {
       <CommonHeader title="Product Details" />
       <View>
         {isLoading && productdata ? (
-          <Text>Loader</Text>) :
+          <Loader title="Loading"/>) :
           (
             <><View accessible={true}>
               
