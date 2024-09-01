@@ -51,7 +51,7 @@ const Home = () => {
           <Text>{item?.title}</Text>
           <View accessible={true} style={styles.addToCartContainer}>
             <Text style={styles.minVariant}>
-              ${item?.compareAtPriceRange.minVariantPrice.amount}</Text>
+              ${item?.priceRange.minVariantPrice.amount}</Text>
             <TouchableOpacity
               accessible={true}
               accessibilityLabel="Add to Cart"
