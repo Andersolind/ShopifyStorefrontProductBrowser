@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Intro from '../screens/Intro';
 import Home from '../screens/Home';
 import ProductDetails from '../screens/ProductDetails';
+import Cart from '../screens/Cart';
 
 
 const RootStack = createNativeStackNavigator();
@@ -20,6 +21,11 @@ const StackNavigation:any = () => {
         <RootStack.Screen
         name="Home"
         component={Home}
+        options={{headerShown:false}}
+        />
+         <RootStack.Screen
+        name="Cart"
+        component={Cart}
         options={{headerShown:false}}
         />
        
