@@ -33,7 +33,6 @@ const Intro = () => {
                         onPress={() => navigation.navigate('Home')}>
                         Get Started
                     </Text>
-
                 </TouchableOpacity>
             </View>
         </View>

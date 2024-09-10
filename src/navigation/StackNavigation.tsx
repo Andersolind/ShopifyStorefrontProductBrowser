@@ -28,12 +28,6 @@ const StackNavigation:any = () => {
         component={Cart}
         options={{headerShown:false}}
         />
-       
-          <RootStack.Screen
-        name="ProductDetails"
-        component={ProductDetails}
-        options={{headerShown:false}}
-        />
     </RootStack.Navigator>
    
   )

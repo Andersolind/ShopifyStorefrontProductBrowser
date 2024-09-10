@@ -1,8 +1,6 @@
-import { View, Text, SafeAreaView, Pressable, Image, StyleSheet } from 'react-native'
+import { View, Text, SafeAreaView, Pressable, StyleSheet } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { Bars4Icon, XMarkIcon } from 'react-native-heroicons/outline'
-import { colors } from '../constants'
 
 const SideMenu = () => {
 
@@ -16,21 +14,18 @@ const SideMenu = () => {
     },
     {
       title: 'Cart',
-    },
-    {
-      title: 'Products',
     }
   ]
   const navigation: any = useNavigation()
   return (
     <SafeAreaView style={styles.container} >
       <View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Text style={{ fontSize: 14, fontWeight: '600', marginTop: 10, textAlign: 'center' }}>Press to navigate</Text>
+        <View style={styles.subView}>
+          <Text style={styles.button}>Press to navigate</Text>
 
         </View>
         {navigations.map(({ title }: { title: string }) => (
-          <Pressable key={title} style={styles.menu} onPress={()=>navigation.navigate(title)}>
+          <Pressable key={title} style={styles.menu} onPress={() => navigation.navigate(title)}>
             <Text style={styles.menuText}>{title}</Text>
           </Pressable>
         ))}
@@ -39,6 +34,12 @@ const SideMenu = () => {
   )
 }
 const styles = StyleSheet.create({
+  subView: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'
+  },
+  button: {
+    fontSize: 14, fontWeight: '600', marginTop: 10, textAlign: 'center'
+  },
   container: {
     padding: 20,
   },
